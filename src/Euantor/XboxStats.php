@@ -10,11 +10,18 @@
  * @link      http://euantor.com/xboxstats
  */
 
+namespace Euantor;
+
 /**
  * Xbox Stats
  */
 class XboxStats
 {
+    /**
+     * The base URL of the XBL Gamercard.
+     */
+    const GAMERCARD_URL = 'http://gamercard.xbox.com/en-US/%s.card';
+
     /**
      * The current gamertag who's stats are being fetched.
      *
@@ -63,14 +70,14 @@ class XboxStats
     public function getStats()
     {
         if (empty($this->gamertag)) {
-            throw new Exception('No gamertag set. Please set one using setGamertag()', 1);
+            throw new \Exception('No gamertag set. Please set one using setGamertag()', 1);
         }
 
         if (!isset($this->gamercard[$this->gamertag])) {
-            $doc = new DOMDocument();
+            $doc = new \DOMDocument();
             $doc->validateOnParse = true;
-            if (!$doc->loadHTMLFile("http://gamercard.xbox.com/en-US/{$this->gamertag}.card")) {
-                throw new Exception('Could not load stats.', 1);
+            if (!$doc->loadHTMLFile(sprintf(self::GAMERCARD_URL, $this->gamertag))) {
+                throw new \Exception('Could not load stats.', 1);
             }
             $this->gamercard[$this->gamertag] = $doc->saveHTML();
             unset($doc);
@@ -88,18 +95,18 @@ class XboxStats
     {
         if (!isset($this->stats[$this->gamertag])) {
             if (isset($this->gamercard[$this->gamertag])) {
-                $doc = new DOMDocument();
+                $doc = new \DOMDocument();
                 $doc->loadHTML($this->gamercard[$this->gamertag]);
             } else {
-                throw new Exception('You must first run getStats()', 1);
+                throw new \Exception('You must first run getStats()', 1);
             }
 
-            $domXPath = new DOMXPath($doc);
+            $domXPath = new \DOMXPath($doc);
 
             $player = array(
                 'gamertag'   => $domXPath->query("//a[@id='Gamertag']")->item(0)->nodeValue,
                 'gamerpic'   => $domXPath->query("//img[@id='Gamerpic']/@src")->item(0)->nodeValue,
-                'gamerscore' => intval($domXPath->query("//div[@id='Gamerscore']")->item(0)->nodeValue),
+                'gamerscore' => (int) $domXPath->query("//div[@id='Gamerscore']")->item(0)->nodeValue,
                 'location'   => $domXPath->query("//div[@id='Location']")->item(0)->nodeValue,
                 'motto'      => $domXPath->query("//div[@id='Motto']")->item(0)->nodeValue,
                 'bio'        => $domXPath->query("//div[@id='Bio']")->item(0)->nodeValue,
@@ -111,7 +118,7 @@ class XboxStats
             $other = explode(" ", $other);
 
             $player['subscription'] = $other[1];
-            $player['gender']       = $other[2];
+            $player['gender']          = $other[2];
 
             date_default_timezone_set('Europe/London');
 
