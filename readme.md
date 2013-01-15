@@ -8,8 +8,8 @@ Usage
 
 **Code:**
 
-	require 'XboxStats.class.php';
-	$xbox = new XboxStats;
+	require 'src/Euantor/XboxStats.php';
+	$xbox = new Euantor\XboxStats;
 
 	var_dump($xbox->setGamertag('etorano')->getStats());
 
@@ -26,9 +26,9 @@ Usage
 		'rep' => int 5
 		'subscription' => string 'Gold' (length=4)
 		'gender' => string 'Male' (length=4)
-		'games' => 
+		'games' =>
 			array (size=5)
-				1 => 
+				1 =>
 					array (size=8)
 						'image' => string 'http://tiles.xbox.com/tiles/Fb/Ys/02dsb2JhbA9ECgQNGwEfV1pTL2ljb24vMC84MDAwIAAAAAAAAPwDtgo=.jpg' (length=94)
 						'title' => string 'Battlefield 3' (length=13)
@@ -38,7 +38,7 @@ Usage
 						'earnedAchievements' => string '34' (length=2)
 						'availableAchievements' => string '53' (length=2)
 						'completion' => string '64%' (length=3)
-				2 => 
+				2 =>
 					array (size=8)
 						'image' => string 'http://tiles.xbox.com/tiles/RX/0w/1Wdsb2JhbA9ECgQJGgYfVlpWL2ljb24vMC84MDAwIAAAAAAAAPoffVo=.jpg' (length=94)
 						'title' => string 'Call of Duty Black Ops' (length=22)
@@ -48,7 +48,7 @@ Usage
 						'earnedAchievements' => string '19' (length=2)
 						'availableAchievements' => string '71' (length=2)
 						'completion' => string '26%' (length=3)
-				3 => 
+				3 =>
 					array (size=8)
 						'image' => string 'http://tiles.xbox.com/tiles/d1/CI/1Wdsb2JhbA9ECgRcGgMfVloBL2ljb24vMC84MDAwIAAAAAAAAPqnUGg=.jpg' (length=94)
 						'title' => string 'Halo: Reach' (length=11)
@@ -58,7 +58,7 @@ Usage
 						'earnedAchievements' => string '31' (length=2)
 						'availableAchievements' => string '69' (length=2)
 						'completion' => string '44%' (length=3)
-				4 => 
+				4 =>
 					array (size=8)
 						'image' => string 'http://tiles.xbox.com/tiles/YS/ko/0mdsb2JhbA9ECgRcGgMfWQpVL2ljb24vMC84MDAwIAAAAAAAAP0HKX4=.jpg' (length=94)
 						'title' => string 'Halo 3' (length=6)
@@ -68,7 +68,7 @@ Usage
 						'earnedAchievements' => string '23' (length=2)
 						'availableAchievements' => string '79' (length=2)
 						'completion' => string '29%' (length=3)
-				5 => 
+				5 =>
 					array (size=8)
 						'image' => string 'http://tiles.xbox.com/tiles/Rt/BZ/0Gdsb2JhbA9ECgRcGgMfVlhUL2ljb24vMC84MDAwIAAAAAAAAP920Fk=.jpg' (length=94)
 						'title' => string 'Halo 3: ODST' (length=12)
