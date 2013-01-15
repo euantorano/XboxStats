@@ -9,7 +9,7 @@ Usage
 **Code:**
 
 	require 'src/Euantor/XboxStats.php';
-	$xbox = new Euantor\XboxStats;
+	$xbox = new euantor\XboxStats;
 
 	var_dump($xbox->setGamertag('etorano')->getStats());
 

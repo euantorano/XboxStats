@@ -1,5 +1,5 @@
 {
-    "name": "Euantor/XboxStats",
+    "name": "euantor/xbox-stats",
     "type": "library",
     "description": "Xbox Live statistics fetching.",
     "keywords": ["xbox","xbox live"],
