@@ -1,0 +1,24 @@
+{
+    "name": "Euantor/XboxStats",
+    "type": "library",
+    "description": "Xbox Live statistics fetching.",
+    "keywords": ["xbox","xbox live"],
+    "homepage": "http://github.com/euantor/XboxStats",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Euan T.",
+            "email": "euan@euantor.com",
+            "homepage": "http://euantor.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Euantor": "src"
+        }
+    }
+}

@@ -103,7 +103,7 @@ class XboxStats
 
             $domXPath = new \DOMXPath($doc);
 
-            $player = array(
+            $player = [
                 'gamertag'   => $domXPath->query("//a[@id='Gamertag']")->item(0)->nodeValue,
                 'gamerpic'   => $domXPath->query("//img[@id='Gamerpic']/@src")->item(0)->nodeValue,
                 'gamerscore' => (int) $domXPath->query("//div[@id='Gamerscore']")->item(0)->nodeValue,
@@ -112,7 +112,7 @@ class XboxStats
                 'bio'        => $domXPath->query("//div[@id='Bio']")->item(0)->nodeValue,
                 'name'       => $domXPath->query("//div[@id='Name']")->item(0)->nodeValue,
                 'rep'        => ($domXPath->query("//div[@class='RepContainer']/div[@class='Star Full']")->length) + ($domXPath->query("//div[@class='RepContainer']/div[@class='Star Half']")->length / 2),
-            );
+            ];
 
             $other = $domXPath->evaluate("string(//div[contains(@class, 'XbcGamercard')]/@class)");
             $other = explode(" ", $other);
@@ -123,7 +123,7 @@ class XboxStats
             date_default_timezone_set('Europe/London');
 
             for ($i = 1; $i <= 5; $i++) {
-                $player['games'][$i] = array (
+                $player['games'][$i] = [
                     'image'                 => $domXPath->query(".//*[@id='PlayedGames']/li[".$i."]/a/img/@src")->item(0)->nodeValue,
                     'title'                 => $domXPath->query(".//ol[@id='PlayedGames']/li[".$i."]/a/span[@class='Title']")->item(0)->nodeValue,
                     'lastPlayed'            => strtotime($domXPath->query(".//ol[@id='PlayedGames']/li[".$i."]/a/span[@class='LastPlayed']")->item(0)->nodeValue),
@@ -132,7 +132,7 @@ class XboxStats
                     'earnedAchievements'    => $domXPath->query(".//ol[@id='PlayedGames']/li[".$i."]/a/span[@class='EarnedAchievements']")->item(0)->nodeValue,
                     'availableAchievements' => $domXPath->query(".//ol[@id='PlayedGames']/li[".$i."]/a/span[@class='AvailableAchievements']")->item(0)->nodeValue,
                     'completion'            => $domXPath->query(".//ol[@id='PlayedGames']/li[".$i."]/a/span[@class='PercentageComplete']")->item(0)->nodeValue,
-                );
+                ];
             }
 
             $this->stats[$this->gamertag] = $player;
